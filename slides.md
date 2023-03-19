@@ -48,7 +48,6 @@ As suas instâncias são $(G)$ onde:
 
 O problema do clique é encontrar um clique máximo de um grafo.
 
-<Counter />
 ---
 
 #### Exemplo
@@ -76,6 +75,8 @@ Para provar que K-clique é NP, mostrarei um algoritmo que válida uma solução
 
 ### Certificado do K-Clique
 O certificado $C$ é o clique encontrado, e esse algoritmo verifica que ele realmente se encontra no grafo $G$ e é maior que $k$.
+
+---
 
 ### Algoritmo de verificação
 ``` rust 
@@ -119,4 +120,52 @@ $$O(n^3)$$
 ---
 
 ## K-Clique é NP-dificil
+Prova que K-Clique é NP-dificil usando redução do CNF-3SAT.
+---
+
+O CNF-3SAT é um problema de decisão onde a instância é uma formula CNF de 3SAT.
+Exemplo:
+$$
+\begin{align}
+    (x_1 \lor x_2 \lor x_3) \land (x_1 \lor x_2 \lor x_4) \land (x_1 \lor x_3 \lor x_4) \land (x_2 \lor x_3 \lor x_4)
+\end{align}
+$$
+
+Essa formula é satisfazível, pois podemos escolher $x_1 = x_2 = 1$.
+
+Usaremos uma redução para provar que K-Clique é NP-dificil.
+
+---
+
+### Redução do CNF-3SAT para K-Clique
+
+Considerando uma formula CNF de 3SAT($\phi$) de $n$ clausulas, na qual cada clausula é uma disjunção de 3 literais,
+assim, cada clausula $C_i$ é uma disjunção de 3 literais $L_{1}^{i}, L_{2}^{i}, L_{3}^{i}$.
+$$ C_i = (L_{i}^{1} \lor L_{i}^{2} \lor L_{i}^{3}) $$
+$$ \phi = \bigwedge_{i=1}^{n} C_i $$
+
+Constuiremos um grafo $G = (V, A)$ onde:
+ - Para cada clausula $C_r$ da formula CNF, teremos uma tripla de vértices $v_{1}^{r}, v_{2}^{r}, v_{3}^{r}$.
+ - Inserimos uma arresta entre dois vértices $v_{1}^{r}, v_{2}^{r}$ se, e somente se ambas as afirmativas forem verdadeiras:
+    - $v_{i}^{r}$ e $v_{j}^{s}$ são vértices de clausulas diferentes. Ou seja, $r \neq s$;
+    - $L_{i}^{r}$ e $L_{j}^{s}$ não são literais complementares. Ou seja, $L_{i}^{r} \neq \neg L_{j}^{s}$.
+
+---
+
+Seja $G = (V, A)$ o grafo construido, então:
+ - Se $\phi$ é satisfazível, então $G$ contém um clique de tamanho $n$.
+ - Se $\phi$ não é satisfazível, então $G$ não contém um clique de tamanho $n$.
+
+---
+clicks: 2
+---
+## Exemplo:
+$$
+\begin{align}
+    (x_1 \lor x_2 \lor x_3) \land (x_1 \lor x_2 \lor x_4) \land (x_1 \lor x_3 \lor x_4) \land (x_2 \lor x_3 \lor x_4)
+\end{align}
+$$
+
+<GrafoExSAT1 />
+
 ---
