@@ -153,8 +153,8 @@ Constuiremos um grafo $G = (V, A)$ onde:
 ---
 
 Seja $G = (V, A)$ o grafo construido, então:
- - Se $\phi$ é satisfazível, então $G$ contém um clique de tamanho $n$.
- - Se $\phi$ não é satisfazível, então $G$ não contém um clique de tamanho $n$.
+ - Se G contem um clique de tamanho $n$, então $\phi$ é satisfazível;
+ - Se G não contém um clique de tamanho $n$, então $\phi$ não é satisfazível.
 
 ---
 clicks: 2
@@ -169,3 +169,34 @@ $$
 <GrafoExSAT1 />
 
 ---
+
+``` rust
+fn sat_to_kclique(sat: Sat) {
+    let grafo = Grafo();// Contem as informações de qual era a clausula original do vertice
+    let clausulasDeOrigem = Mapa<Vertice, int>();
+    for (clausula in sat.clausulas) {
+        let v1 = grafo.add_vertice(clusula.l1);
+        clausulasDeOrigem.add(v1, clausula.n);
+        let v2 = grafo.add_vertice(clausula.l2);
+        clausulasDeOrigem.add(v2, clausula.n);
+        grafo.add_vertice(clausula.l3);
+        clausulasDeOrigem.add(v3, clausula.n);
+    }
+    for (let vertice in grafo) {
+        for (let outro_vertice in grafo) {
+            if (vertice == outro_vertice) continue;
+            if (
+                clausulasDeOrigem.deClausulasDiferentes(vertice, outroVertice) 
+                && vertice != not(outro_vertice)
+            ) {
+                grafo.add_aresta(vertice, outro_vertice);
+            }
+        }
+    }
+    return grafo;
+}
+```
+
+---
+
+## Análise da complexidade do Algoritmo
