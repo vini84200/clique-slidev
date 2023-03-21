@@ -29,11 +29,12 @@ layout: section
 ## 1.1 O que é um clique?
 Clique é um subgrafo completo de um outro grafo. Assim um clique contem apenas vertices que estão conectados a todos os outros vertices.
 
-O tamanho de um clique é o número vértices que participam de um clique.
+O tamanho de um clique é o número vértices que participam del
 
 Um clique é **máximo** se não houver outro clique de tamanho maior neste grafo.
 
 ![Grafo](/grafo1.png)
+
 
 ---
 
@@ -141,9 +142,10 @@ O certificado $C$ é o clique encontrado, e esse algoritmo verifica que ele real
 </div>
 <v-click>
 
-Não é clique, pois não é completo.
+	Não é clique, pois não é completo.
 
 </v-click>
+
 
 ---
 
@@ -277,7 +279,7 @@ $$
 
 <img v-click="1" src="/np_2c_0.svg">
 
---- 
+---
 
 $$
 \begin{align}
@@ -340,7 +342,7 @@ fn sat_to_kclique(sat: Sat) {
         clausulasDeOrigem.add(v1, clausula.n);
         let v2 = grafo.add_vertice(clausula.l2);
         clausulasDeOrigem.add(v2, clausula.n);
-        grafo.add_vertice(clausula.l3);
+        let v3 = grafo.add_vertice(clausula.l3);
         clausulasDeOrigem.add(v3, clausula.n);
     }
     for (let vertice in grafo) {
@@ -358,6 +360,7 @@ fn sat_to_kclique(sat: Sat) {
 }
 ```
 
+
 ---
 
 ## Análise da complexidade do Algoritmo
@@ -371,7 +374,7 @@ fn sat_to_kclique(sat: Sat) {
         clausulasDeOrigem.add(v1, clausula.n);// O(1)
         let v2 = grafo.add_vertice(clausula.l2);// O(1)
         clausulasDeOrigem.add(v2, clausula.n);// O(1)
-        grafo.add_vertice(clausula.l3);// O(1)
+        let v3 = grafo.add_vertice(clausula.l3);// O(1)
         clausulasDeOrigem.add(v3, clausula.n);// O(1)
     }
     for (let vertice in grafo) { // n *
@@ -388,6 +391,8 @@ fn sat_to_kclique(sat: Sat) {
     return (grafo, sat.clausulas.length()) // k é o numero de clausulas
 }
 ```
+
+
 ---
 
 ## Análise da complexidade do Algoritmo
@@ -422,4 +427,4 @@ Algoritmos: Teoria e Prática, 3ª Edição, Thomas H. Cormen, Charles E. Leiser
 
 Os slides estão disponíveis em:
 
-https://vini84200.github.io/clique-slidev 
+https://vini84200.github.io/clique-slidev
