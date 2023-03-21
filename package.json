@@ -11,6 +11,7 @@
     "@slidev/cli": "^0.40.3",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
+    "playwright-chromium": "^1.31.2",
     "slidev-theme-eloc": "^1.0.1",
     "slidev-theme-geist": "^0.8.1",
     "slidev-theme-the-unnamed": "^0.0.10"

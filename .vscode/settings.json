@@ -1,5 +1,9 @@
 {
     "marquee.widgets.npm-stats.packageNames": [
         "cliques-slidev"
+    ],
+    "cSpell.language": "en,pt",
+    "cSpell.words": [
+        "subgrafo"
     ]
 }
