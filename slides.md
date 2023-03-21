@@ -29,7 +29,7 @@ layout: section
 ## 1.1 O que é um clique?
 Clique é um subgrafo completo de um outro grafo. Assim um clique contem apenas vertices que estão conectados a todos os outros vertices.
 
-O tamanho de um clique é o número vértices que participam del
+O tamanho de um clique é o número vértices que participam dele.
 
 Um clique é **máximo** se não houver outro clique de tamanho maior neste grafo.
 
@@ -94,7 +94,7 @@ O problema do K-Clique tem como instância $(G, k)$ onde:
 - $G$ é um grafo da mesma forma que no clique.
 - $k \in \mathbb N$.
 
-O problema consiste em decidir se um grafo contém ao menos um clique de tamanho $k$ ou maior.
+O problema consiste em decidir se um grafo contém ao menos um clique de tamanho $k$.
 
 
 ---
@@ -123,10 +123,10 @@ layout: two-cols
 ---
 
 ## K-Clique é NP:
-Para provar que K-clique é NP, mostrarei um algoritmo que válida uma solução se dado um certificado.
+Para provar que K-clique é NP, mostrarei um algoritmo que valida uma solução se dado um certificado.
 
 ### Certificado do K-Clique
-O certificado $C$ é o clique encontrado, e esse algoritmo verifica que ele realmente se encontra no grafo $G$ e é maior que $k$.
+O certificado $C$ é o clique encontrado, e esse algoritmo verifica que ele realmente se encontra no grafo $G$, tem tamanho igual a $k$ e possui todas as arestas necessárias.
 
 <!-- Dividir em duas colunas -->
 <div class="grid grid-cols-2 gap-4">
@@ -190,7 +190,7 @@ Não é clique, pois não é completo.
 ### Algoritmo de verificação
 ``` rust 
 fn verifica_validade(G: Grafo, k: i32, C: Grafo) -> bool {
-    if C.vert_count < k {return false}
+    if C.vert_count != k {return false}
     
     for (vert in C.V) {
         if (!G.V.contains(vert)) return false;
@@ -206,7 +206,7 @@ fn verifica_validade(G: Grafo, k: i32, C: Grafo) -> bool {
 ```
 <v-click>
 
-O algoritmo verifica se o clique é maior que k, se todos os vertices estão no grafo e se todos os vertices estão conectados.
+O algoritmo verifica se o clique é de tamanho igual a k, se todos os vertices estão no grafo e se todos os vertices estão conectados.
 
 $$ O(1) + \sum_{i=1}^n (\sum_{j=1}^n (O(1) + O(n))) = O(n^3) $$
 
